@@ -1,14 +1,16 @@
-// ignore_for_file: library_private_types_in_public_api, duplicate_import
+// ignore_for_file: duplicate_import, unused_import
 
 import 'package:codeastra/screen/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:codeastra/screen/welcome_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:icons_plus/icons_plus.dart' as icons;
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({required Key key, required this.title}) : super(key: key);
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _MyHomePageState createState() => _MyHomePageState();
 }
 
@@ -86,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text("Terms and conditions"),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -109,7 +111,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         _acceptedTerms = value!;
                       });
                     },
-                    activeColor: Colors.white,
                   ),
                   GestureDetector(
                     onTap: () {

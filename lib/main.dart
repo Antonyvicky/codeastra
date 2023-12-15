@@ -1,7 +1,9 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, use_key_in_widget_constructors
 
 import 'package:codeastra/firebase_options.dart';
+
 import 'package:codeastra/screen/terms.dart';
+
 import 'package:codeastra/themes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -21,8 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: lightMode,
       home: const MyHomePage(
-        key: Key("key"), // Use const Key for efficiency
-        title: 'Terms and Conditions', // Capitalized title
+        key: Key("key"),
       ),
     );
   }
