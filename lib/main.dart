@@ -1,9 +1,8 @@
 // ignore_for_file: unused_import, use_key_in_widget_constructors
 
 import 'package:codeastra/firebase_options.dart';
-
-import 'package:codeastra/screen/terms.dart';
-
+import 'package:codeastra/screen_1/login_signup.dart';
+import 'package:codeastra/screen_1/terms.dart';
 import 'package:codeastra/themes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: lightMode,
-      home: const MyHomePage(
-        key: Key("key"),
-      ),
+      home: const LoginSignupScreen()
     );
   }
 }

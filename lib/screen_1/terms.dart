@@ -1,8 +1,6 @@
 // ignore_for_file: duplicate_import, unused_import
 
-import 'package:codeastra/screen/welcome_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:codeastra/screen/welcome_screen.dart';
+import 'package:codeastra/screen_1/login_signup.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart' as icons;
 
@@ -131,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const WelcomeScreen()));
+                          builder: (context) => LoginSignupScreen()));
                 } else {
                   // Show a message or handle the case where terms are not accepted
                 }
