@@ -37,17 +37,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 SizedBox(height: 12),
                 Text(
-                  "2. **Accuracy of Results:** The app should provide accurate and reliable soil test results. Clearly communicate the limitations of the app, such as the types of soil it can analyze and any factors that may affect the accuracy of the results.",
+                  " The app should provide accurate and reliable soil test results. Clearly communicate the limitations of the app, such as the types of soil it can analyze and any factors that may affect the accuracy of the results.",
                   style: TextStyle(fontSize: 16),
                 ),
                 SizedBox(height: 12),
                 Text(
-                  "3. **Usage Restrictions:** Clearly outline the intended use of the soil test app and any restrictions on its use. Users should be informed if the app is for personal or professional use and if there are any limitations on the number of tests or the frequency of use.",
+                  " Clearly outline the intended use of the soil test app and any restrictions on its use. Users should be informed if the app is for personal or professional use and if there are any limitations on the number of tests or the frequency of use.",
                   style: TextStyle(fontSize: 16),
                 ),
                 SizedBox(height: 12),
                 Text(
-                  "4. **Liability and Disclaimer:** Include a disclaimer stating that the app is not a substitute for professional advice. Make it clear that the developers and owners of the app are not liable for any consequences resulting from the use of the app, and users should seek professional guidance for critical decisions based on soil test results.",
+                  "Include a disclaimer stating that the app is not a substitute for professional advice. Make it clear that the developers and owners of the app are not liable for any consequences resulting from the use of the app, and users should seek professional guidance for critical decisions based on soil test results.",
                   style: TextStyle(fontSize: 16),
                 ),
               ],
@@ -87,9 +87,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Terms and conditions"),
-      ),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
