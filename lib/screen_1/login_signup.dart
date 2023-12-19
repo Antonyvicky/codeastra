@@ -1,11 +1,13 @@
+import 'package:codeastra/home_g.dart';
 import 'package:flutter/material.dart';
-import 'package:icons_plus/icons_plus.dart'; // Import FlutterIcons
+import 'package:icons_plus/icons_plus.dart'; 
 import 'package:codeastra/config/palette.dart';
 
 class LoginSignupScreen extends StatefulWidget {
   const LoginSignupScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _LoginSignupScreenState createState() => _LoginSignupScreenState();
 }
 
@@ -25,7 +27,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
             top: 0,
             right: 0,
             left: 0,
-            child: Container(
+            child: SizedBox(
               height: 300,
               child: Container(
                 padding: const EdgeInsets.only(top: 90, left: 20),
@@ -79,7 +81,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 700),
               curve: Curves.bounceInOut,
-              height: isSignupScreen ? 380 : 250,
+              height: isSignupScreen ? 440 : 250,
               padding: const EdgeInsets.all(20),
               width: MediaQuery.of(context).size.width - 40,
               margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -165,7 +167,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
           buildBottomHalfContainer(false),
           // Bottom buttons
           Positioned(
-            top: MediaQuery.of(context).size.height - 100,
+            top: MediaQuery.of(context).size.height - 150,
             right: 0,
             left: 0,
             child: Column(
@@ -279,6 +281,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
           ),
           ElevatedButton(
             onPressed: () {
+              setState(() {
+                _acceptedTerms = false;
+              });
               Navigator.of(context).pop();
             },
             style: ElevatedButton.styleFrom(
@@ -393,34 +398,51 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const SizedBox(
                         child: Text(
-                          "By pressing 'Submit' you agree to our ",
+                          "By pressing 'Accept' you agree to our ",
                           textAlign: TextAlign.center,
                           style: TextStyle(color: Palette.textColor2),
                         ),
                       ),
-                      Checkbox(
-                        value: _acceptedTerms,
-                        onChanged: (value) {
-                          setState(() {
-                            _acceptedTerms = value!;
-                          });
-                        },
+                      const SizedBox(
+                        height: 20,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          _showTermsDialog();
-                        },
-                        child: const Text(
-                          'Terms and Conditions',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.orange,
-                            decoration: TextDecoration.underline,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              _showTermsDialog();
+                            },
+                            child: const Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(width: 40), // Adjust the width as needed
+                                Text(
+                                  'Terms and Conditions',
+                                  style: TextStyle(
+                                    color: Colors.orange,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                                Text(
+                                  "  ",
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
+                          Checkbox(
+                            value: _acceptedTerms,
+                            onChanged: (value) {
+                              setState(() {
+                                _acceptedTerms = value!;
+                              });
+                            },
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -466,15 +488,25 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
     return AnimatedPositioned(
       duration: const Duration(milliseconds: 700),
       curve: Curves.bounceInOut,
-      top: isSignupScreen ? 535 : 430,
+      top: isSignupScreen ? 590 : 430,
       right: 0,
       left: 0,
       child: Center(
-        child: Container(
-          height: 90,
-          width: 90,
-          padding: const EdgeInsets.all(15),
-          decoration: BoxDecoration(
+        child: GestureDetector(
+          onTap: () {
+            // Add the navigation logic here
+            if ( _acceptedTerms ){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage_1()),
+              );
+            }
+          },
+          child: Container(
+            height: 90,
+            width: 90,
+            padding: const EdgeInsets.all(15),
+            decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(50),
               boxShadow: [
@@ -484,28 +516,33 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                     spreadRadius: 1.5,
                     blurRadius: 10,
                   )
-              ]),
-          child: !showShadow
-              ? Container(
-                  decoration: BoxDecoration(
+              ],
+            ),
+            child: !showShadow
+                ? Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(70),
                       gradient: const LinearGradient(
-                          colors: [Colors.orange, Colors.red],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight),
-                      borderRadius: BorderRadius.circular(30),
+                        colors: [Colors.orange, Colors.red],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
                       boxShadow: [
                         BoxShadow(
-                            color: Colors.black.withOpacity(.3),
-                            spreadRadius: 1,
-                            blurRadius: 2,
-                            offset: const Offset(0, 1))
-                      ]),
-                  child: const Icon(
-                    Icons.arrow_forward,
-                    color: Colors.white,
-                  ),
-                )
-              : const Center(),
+                          color: Colors.black.withOpacity(.3),
+                          spreadRadius: 2,
+                          blurRadius: 2,
+                          offset: const Offset(0, 1),
+                        ),
+                      ],
+                    ),
+                    child: const Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                    ),
+                  )
+                : const Center(),
+          ),
         ),
       ),
     );

@@ -5,7 +5,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class HomePage_1 extends StatelessWidget {
         title: 'Source', icon: Icons.code, page: const SourceDetailsPage()),
   ];
 
-  HomePage_1({Key? key}) : super(key: key);
+  HomePage_1({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -255,7 +255,7 @@ class onPressed {
 }
 
 class ResponsiveBoxListPage extends StatelessWidget {
-  const ResponsiveBoxListPage({Key? key}) : super(key: key);
+  const ResponsiveBoxListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -266,7 +266,7 @@ class ResponsiveBoxListPage extends StatelessWidget {
 class ElementsPage extends StatelessWidget {
   final List<String> boxData = List.generate(18, (index) => 'Box ${index + 1}');
 
-  ElementsPage({Key? key}) : super(key: key);
+  ElementsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -469,7 +469,7 @@ class ElementsPage extends StatelessWidget {
 class DetailPage extends StatelessWidget {
   final String boxText;
 
-  const DetailPage(this.boxText, {Key? key}) : super(key: key);
+  const DetailPage(this.boxText, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -489,7 +489,7 @@ class DetailPage extends StatelessWidget {
 }
 
 class HomeDetailsPage extends StatefulWidget {
-  const HomeDetailsPage({Key? key}) : super(key: key);
+  const HomeDetailsPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -645,7 +645,7 @@ void _changeTheme(BuildContext context) {
 }
 
 class AboutDetailsPage extends StatelessWidget {
-  const AboutDetailsPage({Key? key}) : super(key: key);
+  const AboutDetailsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -769,7 +769,7 @@ class AboutDetailsPage extends StatelessWidget {
 }
 
 class SourceDetailsPage extends StatefulWidget {
-  const SourceDetailsPage({Key? key}) : super(key: key);
+  const SourceDetailsPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -909,7 +909,7 @@ class _SourceDetailsPageState extends State<SourceDetailsPage> {
 }
 
 class AddDevicePage extends StatefulWidget {
-  const AddDevicePage({Key? key}) : super(key: key);
+  const AddDevicePage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -961,7 +961,7 @@ class _AddDevicePageState extends State<AddDevicePage> {
 }
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
