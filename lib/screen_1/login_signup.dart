@@ -1,7 +1,7 @@
-import 'package:codeastra/home_g.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart'; 
 import 'package:codeastra/config/palette.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginSignupScreen extends StatefulWidget {
   const LoginSignupScreen({super.key});
@@ -16,6 +16,16 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
   bool isMale = true;
   bool isRememberMe = false;
   bool _acceptedTerms = false;
+
+  final emailCont = TextEditingController();
+  final passwordCont = TextEditingController();
+
+  void signUserIn() async{
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: emailCont.text,
+      password: passwordCont.text,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -196,9 +206,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
       margin: const EdgeInsets.only(top: 20),
       child: Column(
         children: [
-          buildTextField(Icons.mail_outline, "email", false, true),
+          buildTextField(Icons.mail_outline, "email", false, true, emailCont),
           buildTextField(const IconData(0xf1ac, fontFamily: 'MaterialIcons'),
-              "password", true, false),
+              "password", true, false, passwordCont),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -493,15 +503,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
       left: 0,
       child: Center(
         child: GestureDetector(
-          onTap: () {
-            // Add the navigation logic here
-            if ( _acceptedTerms ){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HomePage_1()),
-              );
-            }
-          },
+          onTap: signUserIn,
           child: Container(
             height: 90,
             width: 90,
@@ -549,7 +551,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
   }
 
   Widget buildTextField(
-      IconData icon, String hintText, bool isPassword, bool isEmail) {
+      // ignore: avoid_types_as_parameter_names, non_constant_identifier_names
+      IconData icon, String hintText, bool isPassword, bool isEmail, [TextEditingController? controller]) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: TextField(
@@ -575,10 +578,4 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
       ),
     );
   }
-}
-
-void main() {
-  runApp(const MaterialApp(
-    home: LoginSignupScreen(),
-  ));
 }

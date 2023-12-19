@@ -17,24 +17,15 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -52,11 +43,39 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyBygHh8FjbxHAXwNjoxOPHImY_DtTQnFZE',
+    appId: '1:826532816495:web:20c8bced14b1e9371d0f9a',
+    messagingSenderId: '826532816495',
+    projectId: 'appdata-bc95c',
+    authDomain: 'appdata-bc95c.firebaseapp.com',
+    storageBucket: 'appdata-bc95c.appspot.com',
+    measurementId: 'G-6BE8C6R9Q1',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAdQJ1y-rDaCMRK5krIcnLmILCOyTBIALI',
     appId: '1:826532816495:android:1e4d8889a3fe68fc1d0f9a',
     messagingSenderId: '826532816495',
     projectId: 'appdata-bc95c',
     storageBucket: 'appdata-bc95c.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyDdthhVGapuCg9HGCVg9sAZW0tSl6tFO-4',
+    appId: '1:826532816495:ios:f2a77bd9fcd6e34a1d0f9a',
+    messagingSenderId: '826532816495',
+    projectId: 'appdata-bc95c',
+    storageBucket: 'appdata-bc95c.appspot.com',
+    iosBundleId: 'com.example.codeastra',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDdthhVGapuCg9HGCVg9sAZW0tSl6tFO-4',
+    appId: '1:826532816495:ios:67121a0713d11d3c1d0f9a',
+    messagingSenderId: '826532816495',
+    projectId: 'appdata-bc95c',
+    storageBucket: 'appdata-bc95c.appspot.com',
+    iosBundleId: 'com.example.codeastra.RunnerTests',
   );
 }

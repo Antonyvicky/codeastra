@@ -2,12 +2,17 @@
 
 import 'package:codeastra/firebase_options.dart';
 import 'package:codeastra/net.dart';
+import 'package:codeastra/screen_1/login_auth.dart';
 import 'package:codeastra/screen_1/login_signup.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -19,7 +24,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: MyApp_1()
+      home: AuthPage()
     );
   }
 }
